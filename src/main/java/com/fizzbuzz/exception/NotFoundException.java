@@ -5,11 +5,16 @@ public class NotFoundException
 
     private static final long serialVersionUID = 1L;
 
+    public NotFoundException() {
+        super("no message provided by caller");
+    }
+
     public NotFoundException(final String message) {
         super(message);
     }
 
-    public NotFoundException(final String message, final Throwable cause) {
+    public NotFoundException(final String message,
+            final Throwable cause) {
         super(message, cause);
     }
 

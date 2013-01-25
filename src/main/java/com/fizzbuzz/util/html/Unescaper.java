@@ -509,6 +509,10 @@ public class Unescaper {
             .put("&#9830", "♦")
             .build();
 
+    // this is just a collection of static methods. Make the constructor private to prevent instantiation.
+    private Unescaper() {
+    }
+
     public static final String unescape(final String input) {
         int amp, semi;
         String result = input;

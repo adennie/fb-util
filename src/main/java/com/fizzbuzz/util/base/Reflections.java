@@ -3,6 +3,11 @@ package com.fizzbuzz.util.base;
 import java.lang.reflect.Constructor;
 
 public class Reflections {
+
+    // this is just a collection of static methods. Make the constructor private to prevent instantiation.
+    private Reflections() {
+    }
+
     public static <T> T newInstance(final Class<T> clazz) {
         T result = null;
 
@@ -16,14 +21,16 @@ public class Reflections {
         return result;
     }
 
-    public static <S> S newInstance(final Class<S> clazz, final long param) {
+    public static <S> S newInstance(final Class<S> clazz,
+            final long param) {
         // get the constructor for the specified class that takes a long param. Then construct it.
         Constructor<S> ctor = getConstructor(clazz, new Class[] { long.class });
         return newInstance(ctor, param);
 
     }
 
-    public static <T> T newInstance(final Constructor<T> ctor, final Object... args) {
+    public static <T> T newInstance(final Constructor<T> ctor,
+            final Object... args) {
         T result = null;
 
         try {
@@ -36,7 +43,8 @@ public class Reflections {
         return result;
     }
 
-    public static <T> Constructor<T> getConstructor(final Class<T> clazz, final Class<?>... paramTypes) {
+    public static <T> Constructor<T> getConstructor(final Class<T> clazz,
+            final Class<?>... paramTypes) {
         Constructor<T> result = null;
         try {
             result = clazz.getConstructor(paramTypes);
